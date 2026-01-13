@@ -332,7 +332,7 @@ This project is licensed under the MIT License - see the LICENSE file for deta
 For support, please:
     1. Check the Wiki
     2. Open an Issue
-    3. Email: asifinet@example.com
+    3. Email: asif_inet@hotmail.com
 
 🙏 Acknowledgments
     • Spring Boot team for the amazing framework
