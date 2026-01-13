@@ -1,7 +1,9 @@
 provide me project Readme
 🔍 Search Demo Application
+
 📖 Overview
 A modern Spring Boot application demonstrating advanced search functionality with REST API, database operations, and comprehensive logging. This project serves as a practical example of building production-ready microservices with Spring Boot.
+
 ✨ Features
     • 🔍 Advanced Search - Dynamic query-based search with pagination
     • 📊 CRUD Operations - Full REST API for customer management
