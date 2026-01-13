@@ -1,4 +1,3 @@
-provide me project Readme
 🔍 Search Demo Application
 
 📖 Overview
