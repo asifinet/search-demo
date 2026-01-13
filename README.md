@@ -140,6 +140,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 
+
 # Logging Configuration
 logging.level.com.example.demo=DEBUG
 logging.level.org.springframework.web=INFO
@@ -148,6 +149,7 @@ Profiles
     • Development: application-dev.properties (H2 database)
     • Production: application-prod.properties (PostgreSQL)
     • Test: application-test.properties (Test configurations)
+
 📊 Sample Data
 Insert Sample Customers
 sql
