@@ -13,8 +13,10 @@ A modern Spring Boot application demonstrating advanced search functionality wit
     • 🛡️ Error Handling - Global exception handling with proper HTTP responses
     • 🧪 Testing - Unit and integration tests
     • 📈 Monitoring - Health checks and metrics
+
 🏗️ Architecture
 text
+
 CopyDownload
 ├── Controllers (REST API Layer)
 ├── Services (Business Logic Layer)
@@ -23,40 +25,49 @@ CopyDownload
 ├── DTOs (Data Transfer Objects)
 ├── AOP (Cross-cutting Concerns)
 └── Configuration (App Configuration)
+
 🚀 Getting Started
 Prerequisites
     • Java 17 or higher
     • Maven 3.6+
     • PostgreSQL/MySQL (or H2 for development)
     • Git
+
 Installation
     1. Clone the repository
        bash
        CopyDownload
        git clone https://github.com/asifinet/search-demo.git
        cd search-demo
+    
     2. Configure database
         ◦ For development (H2 in-memory):
           properties
           CopyDownload
+        
           # Already configured in application-dev.properties
-        ◦ For production (PostgreSQL):
+        ◦ 
+        For production (PostgreSQL):
           properties
           CopyDownload
           spring.datasource.url=jdbc:postgresql://localhost:5432/searchdemo
           spring.datasource.username=your_username
           spring.datasource.password=your_password
+
     3. Build and run
        bash
        CopyDownload
        mvn clean install
        mvn spring-boot:run
+    
     4. Access the application
         ◦ Application: http://localhost:8080
         ◦ API Documentation: http://localhost:8080/swagger-ui.html
         ◦ H2 Console (dev): http://localhost:8080/h2-console
         ◦ Actuator Health: http://localhost:8080/actuator/health
+
 📚 API Documentation
+
 Customer Endpoints
 Method	Endpoint	Description
 GET	/api/customers	Get all customers
@@ -66,6 +77,7 @@ PUT	/api/customers/{id}	Update customer
 PATCH	/api/customers/{id}	Partially update customer
 DELETE	/api/customers/{id}	Delete customer
 GET	/api/customers/search?q={query}	Search customers
+
 Order Endpoints
 Method	Endpoint	Description
 GET	/api/orders	Get all orders
@@ -75,6 +87,7 @@ GET	/api/customers/{id}/order-summary	Get customer's order summary
 Search Examples
 bash
 CopyDownload
+
 # Search customers by name or email
 GET /api/customers/search?q=john
 
