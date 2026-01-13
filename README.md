@@ -14,9 +14,7 @@ A modern Spring Boot application demonstrating advanced search functionality wit
     • 📈 Monitoring - Health checks and metrics
 
 🏗️ Architecture
-text
 
-CopyDownload
 ├── Controllers (REST API Layer)
 ├── Services (Business Logic Layer)
 ├── Repositories (Data Access Layer)
@@ -35,27 +33,27 @@ Prerequisites
 Installation
     1. Clone the repository
        bash
-       CopyDownload
+   
        git clone https://github.com/asifinet/search-demo.git
        cd search-demo
     
     2. Configure database
         ◦ For development (H2 in-memory):
           properties
-          CopyDownload
+       
         
           # Already configured in application-dev.properties
         ◦ 
         For production (PostgreSQL):
           properties
-          CopyDownload
+        
           spring.datasource.url=jdbc:postgresql://localhost:5432/searchdemo
           spring.datasource.username=your_username
           spring.datasource.password=your_password
 
     3. Build and run
        bash
-       CopyDownload
+      
        mvn clean install
        mvn spring-boot:run
     
@@ -92,7 +90,7 @@ POST	/api/orders	Create new order
 GET	/api/customers/{id}/order-summary	Get customer's order summary
 Search Examples
 bash
-CopyDownload
+
 
 # Search customers by name or email
 GET /api/customers/search?q=john
@@ -106,7 +104,7 @@ GET /api/customers/search?q=email:gmail.com
 🗄️ Database Schema
 Customer Table
 sql
-CopyDownload
+
 
 CREATE TABLE customer (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -132,7 +130,7 @@ CREATE TABLE orders (
 🔧 Configuration
 Application Properties
 properties
-CopyDownload
+
 
 # Server Configuration
 server.port=8080
@@ -165,7 +163,7 @@ Profiles
 📊 Sample Data
 Insert Sample Customers
 sql
-CopyDownload
+
 INSERT INTO customer (name, email, phone, birth_date) VALUES
 ('John Doe', 'john.doe@example.com', '+1234567890', '1990-01-15'),
 ('Jane Smith', 'jane.smith@example.com', '+0987654321', '1985-05-22'),
@@ -182,7 +180,7 @@ INSERT INTO orders (customer_id, product_name, total_amount) VALUES
 🧪 Testing
 Run Tests
 bash
-CopyDownload
+
 
 # Run all tests
 mvn test
@@ -267,7 +265,7 @@ COPY target/search-demo-*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 bash
-CopyDownload
+
 
 # Build Docker image
 docker build -t search-demo .
@@ -276,7 +274,7 @@ docker build -t search-demo .
 docker run -p 8080:8080 --name search-demo-app search-demo
 Kubernetes Deployment
 yaml
-CopyDownload
+
 
 # deployment.yaml
 apiVersion: apps/v1
