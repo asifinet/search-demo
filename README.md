@@ -69,12 +69,19 @@ Installation
 
 Customer Endpoints
 Method	Endpoint	Description
+
 GET	/api/customers	Get all customers
+
 GET	/api/customers/{id}	Get customer by ID
+
 POST	/api/customers	Create new customer
+
 PUT	/api/customers/{id}	Update customer
+
 PATCH	/api/customers/{id}	Partially update customer
+
 DELETE	/api/customers/{id}	Delete customer
+
 GET	/api/customers/search?q={query}	Search customers
 
 Order Endpoints
@@ -95,10 +102,12 @@ GET /api/customers/search?q=smith&page=0&size=10&sort=name,asc
 
 # Filter by specific fields
 GET /api/customers/search?q=email:gmail.com
+
 🗄️ Database Schema
 Customer Table
 sql
 CopyDownload
+
 CREATE TABLE customer (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
@@ -108,9 +117,9 @@ CREATE TABLE customer (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
 Order Table
 sql
-CopyDownload
 CREATE TABLE orders (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     customer_id BIGINT NOT NULL,
@@ -119,10 +128,12 @@ CREATE TABLE orders (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (customer_id) REFERENCES customer(id)
 );
+
 🔧 Configuration
 Application Properties
 properties
 CopyDownload
+
 # Server Configuration
 server.port=8080
 server.servlet.context-path=/
@@ -150,6 +161,7 @@ Profiles
     • Production: application-prod.properties (PostgreSQL)
     • Test: application-test.properties (Test configurations)
 
+
 📊 Sample Data
 Insert Sample Customers
 sql
@@ -160,7 +172,8 @@ INSERT INTO customer (name, email, phone, birth_date) VALUES
 ('Bob Johnson', 'bob.johnson@example.com', '+1122334455', '1995-11-30');
 Insert Sample Orders
 sql
-CopyDownload
+
+
 INSERT INTO orders (customer_id, product_name, total_amount) VALUES
 (1, 'Laptop', 1299.99),
 (1, 'Mouse', 29.99),
@@ -170,6 +183,7 @@ INSERT INTO orders (customer_id, product_name, total_amount) VALUES
 Run Tests
 bash
 CopyDownload
+
 # Run all tests
 mvn test
 
@@ -178,10 +192,12 @@ mvn test -Dtest=CustomerServiceTest
 
 # Run with coverage report
 mvn test jacoco:report
+
 Test Coverage
     • Unit Tests: Service layer, Repository layer
     • Integration Tests: REST API endpoints
     • Test Coverage: >80% (with JaCoCo)
+
 📦 Dependencies
 Core Dependencies
     • Spring Boot 3.x - Application framework
@@ -189,30 +205,35 @@ Core Dependencies
     • Spring Web - REST API support
     • Spring Validation - Request validation
     • Spring AOP - Aspect-oriented programming
+
 Database
     • H2 Database - In-memory database (development)
     • PostgreSQL Driver - Production database
     • Hibernate - JPA implementation
+
 Utilities
     • Lombok - Code generation
     • Jackson - JSON processing
     • Swagger/OpenAPI - API documentation
     • Actuator - Application monitoring
+
 Testing
     • JUnit 5 - Unit testing
     • Mockito - Mocking framework
     • Testcontainers - Integration testing
     • JaCoCo - Code coverage
+
 🔍 Search Implementation Details
+
 Search Service
 The application implements a sophisticated search system with:
     • Full-text search across multiple fields
     • Pagination support with customizable page size
     • Sorting by any field in ascending/descending order
     • Dynamic query building based on search criteria
+
 Search Query Examples
 java
-CopyDownload
 // Search customers by name containing "john"
 List<Customer> customers = customerRepository.searchByNameContaining("john", PageRequest.of(0, 10));
 
@@ -220,22 +241,26 @@ List<Customer> customers = customerRepository.searchByNameContaining("john", Pag
 List<Customer> customers = customerRepository.findByCustomCriteria(
     name, email, minAge, maxAge, Pageable.unpaged()
 );
+
 📝 Logging & Monitoring
+
 AOP Logging
 The application uses Aspect-Oriented Programming for automatic logging:
     • All HTTP requests and responses
     • Method execution time
     • Request/Response payloads (truncated for large data)
     • Error tracking
+
 Sample Log Output
 text
-CopyDownload
 2024-01-13 10:30:45 - REQ POST /api/customers | handler=CustomerController.create | args={"name":"Alice","email":"alice@example.com"}
 2024-01-13 10:30:45 - RES POST /api/customers | 48ms | result={"id":123,"name":"Alice","email":"alice@example.com"}
+
+
 🚢 Deployment
 Docker Deployment
 dockerfile
-CopyDownload
+
 # Dockerfile
 FROM openjdk:17-jdk-slim
 COPY target/search-demo-*.jar app.jar
@@ -243,6 +268,7 @@ EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 bash
 CopyDownload
+
 # Build Docker image
 docker build -t search-demo .
 
@@ -251,6 +277,7 @@ docker run -p 8080:8080 --name search-demo-app search-demo
 Kubernetes Deployment
 yaml
 CopyDownload
+
 # deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -271,30 +298,36 @@ spec:
         image: search-demo:latest
         ports:
         - containerPort: 8080
+
 📈 Performance Metrics
 Response Times
     • API Response: < 200ms (p95)
     • Search Queries: < 100ms (with indexing)
     • Database Queries: < 50ms
+
 Memory Usage
     • Heap Size: 512MB default
     • Maximum Heap: 2GB
     • Average Memory: ~300MB
+
 🔒 Security Considerations
 Input Validation
     • All input validated using Bean Validation 3.0
     • SQL injection prevention through JPA parameter binding
     • XSS protection through output encoding
+
 API Security
     • Rate limiting (planned)
     • Authentication/Authorization (planned)
     • HTTPS enforcement (production)
+
 🤝 Contributing
     1. Fork the repository
     2. Create a feature branch (git checkout -b feature/AmazingFeature)
     3. Commit changes (git commit -m 'Add AmazingFeature')
     4. Push to branch (git push origin feature/AmazingFeature)
     5. Open a Pull Request
+
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 📞 Support
@@ -302,6 +335,7 @@ For support, please:
     1. Check the Wiki
     2. Open an Issue
     3. Email: asifinet@example.com
+
 🙏 Acknowledgments
     • Spring Boot team for the amazing framework
     • Open source community for various libraries
