@@ -1,0 +1,288 @@
+{
+  "info": {
+    "_postman_id": "b2514d62-5e7c-4949-8372-877e51c2dd7a",
+    "name": "springboot-demo",
+    "description": "Spring Boot demo: CRUD, pagination search, join query, AOP logging, external call.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customers - List All",
+      "id": "0472d98e-a5ee-4c74-816e-f279e6fa9ee2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/customers",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "customers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Get By Id",
+      "id": "2f8eb65b-e173-4fa2-be0f-daa1e7855116",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/customers/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Search (Pagination)",
+      "id": "c94d3c6d-d0cd-40e2-937b-58b32c5d6649",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/customers/search?q=example.com&page=0&size=2&sort=name,asc",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "example.com"
+            },
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "2"
+            },
+            {
+              "key": "sort",
+              "value": "name,asc"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Create (POST)",
+      "id": "a08c6d84-0c6f-4b1e-867f-945b58c5a63e",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Daisy\",\n  \"email\": \"daisy@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/customers",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "customers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Update (PUT)",
+      "id": "8b81509c-f0bb-43b0-9373-8bd9278cfe81",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Alice Updated\",\n  \"email\": \"alice.updated@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/customers/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Patch (PATCH)",
+      "id": "09265174-d736-4485-b522-65a94b13983a",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Alice Patched\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/customers/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Delete (DELETE)",
+      "id": "deae2382-fbc5-4b8b-b142-d344883152ad",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/customers/3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Order Summary (JOIN query)",
+      "id": "139f5f02-2edc-4e1e-8fda-b9610ce7ec85",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/customers/1/order-summary",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "1",
+            "order-summary"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Orders - List All",
+      "id": "56131cfc-cc92-4f10-8011-9640d772cc02",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Orders - Create (POST)",
+      "id": "c2a1217b-589c-430c-870a-6c3069bb5831",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"productName\": \"USB-C Hub\",\n  \"totalAmount\": 49.99\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/orders",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "External - Call httpbin.org/get",
+      "id": "fe7f89de-937a-4bf4-9312-f5bc8344dfed",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/external/httpbin",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "external",
+            "httpbin"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "ea3d2a01-a57f-4c04-a986-832b0cd83a31",
+      "key": "baseUrl",
+      "value": "http://localhost:8081"
+    }
+  ]
+}
